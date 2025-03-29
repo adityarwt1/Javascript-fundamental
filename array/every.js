@@ -13,3 +13,4 @@ console.log(arrayResult2); // Output: true ✅
 
 /// what i learn we can check the legth and something whatever for the array elements
 // we can clearly see in the result of code line number 3 we are checking the length of word 
+///basicially playing wih the word in leetcode
