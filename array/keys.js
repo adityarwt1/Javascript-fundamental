@@ -1,4 +1,4 @@
-const array = ["apple","papaya"] 
+const array = ["apple","papaya"]
 
 const keys = array.keys()
 
