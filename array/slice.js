@@ -1,4 +1,4 @@
-const array = ["aditya", "aman", "shivendra"];
+const array = ["aditya", "aman", "shivendra"]
 
 const slicedArray = array.slice(1,2)
 
