@@ -12,4 +12,8 @@
 //output is 
 //   1, 2, 1, 2,
 //   3, 6, 7
-  
+
+
+const copywithinarrray = [1,3,4,5,6,7,8]
+
+console.log(copywithinarrray.copyWithin(2,5,5));
