@@ -22,3 +22,4 @@ console.log(fun2())
 
 
 ///scope variable declared in the inside of function and the glble variable declared outside of the box
+/// we can't access the variable updatting value inside the function
