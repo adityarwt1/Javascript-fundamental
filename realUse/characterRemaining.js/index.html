@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Remaining</title>
+</head>
+<body>
+    <input type="text" name="" id="field" minlength="50">
+    <div class="showTheResult"></div>
+    <script>
+        /// grabbing the input field and dib
+        const inputField = document.querySelector("#field")
+        const showTheResult = document.querySelector(".showTheResult");
+
+
+    const checkWordCount = ()=>{
+        showTheResult.textContent = `Remaning character ${50 - inputField.value.length}`
+    }
+    setInterval(() => {
+        checkWordCount()
+    }, 500);
+        
+    </script>
+</body>
+</html>
