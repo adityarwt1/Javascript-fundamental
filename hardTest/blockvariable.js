@@ -1,3 +1,4 @@
+
 function globalVariable(){
     let i = "function variable";
 

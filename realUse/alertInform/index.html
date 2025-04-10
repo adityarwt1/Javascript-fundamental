@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>alert when form is empty </title>
+</head>
+<body>
+    <div class="form">
+        
+            <input type="text" name="username" id="username">
+            <input type="email" name="email" id="email">
+            <button type="submit" id="submit">Submit</button>
+
+    </div>
+    <script>
+        const usernameInput  = document.querySelector('#username')
+        const emailInput = document.querySelector('#email')
+        const submitBtton = document.querySelector('#submit')
+
+       
+        submitBtton.addEventListener("click",()=>{
+
+            if(usernameInput.value.trim() ==0){
+                alert("input field is not be empty")
+            }
+            else{
+                alert("form submited successfully")
+            }
+        })
+
+        
+
+
+
+
+    </script>
+</body>
+</html>
