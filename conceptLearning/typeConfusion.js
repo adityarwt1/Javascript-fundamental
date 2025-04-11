@@ -14,5 +14,12 @@ console.log(ChangedType); /// output will be NaN not a number
 
 // is boolean use 
 
-const isLoggedIn = 1 
-isLoggedIn =  Boolean(isLoggedIn)
+const isLoggedIn = 20 
+const isBoolean =  Boolean(isLoggedIn)
+console.log(isBoolean)
+
+/// => 0 false
+/// => 1 true
+// => "" false
+/// => "aditya" true
+
