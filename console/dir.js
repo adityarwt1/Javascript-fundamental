@@ -10,4 +10,5 @@ const user = {
   console.dir(el);
 
 
+
   //// mainly i could understand this is useless methood to get print the output of dir
