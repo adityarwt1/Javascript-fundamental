@@ -3,3 +3,5 @@
 console.assert(2+2 == 4,"Nothing should be happeng"); ///// nothin igive the output
 
 console.assert(25 + 2 == 28 , "Math is Broken" ) /// this give error massage or any thing you want when assert is failed
+
+
