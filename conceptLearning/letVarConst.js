@@ -16,8 +16,10 @@ console.table([accountId,accountEmail,accountPassword])
 let functionScpope = "function Scope";
 let condition = true;
 if (2+2 === 4) {
-    functionScpope = "bloced scope"
+    let functionScpope = "bloced scope"
     console.log(functionScpope)
 }
 
 console.log(functionScpope)
+
+/// if we are declared again inside the if conndition wee don't get the blocked fscoppe ountise the scop[e]
