@@ -19,17 +19,14 @@ do {
 ///real case of use do while loop 
 ///  when i need the to match the information from database to and user do wrong input because he is a gay
 
-let secretNumber = 7;
+let ShivendraKePercentage = 84;
 let userGuess;
 
 do {
-    userGuess = alert("Guess the secret number (between 1 and 10):");
+    userGuess = Number(prompt("Guess Shivendra Percentage"))
+}
+while(ShivendraKePercentage !== userGuess){
+    console.log("Congratulations! You guessed it right.")
+}
 
-    // Check if the input is a valid number
-    if (isNaN(userGuess)) {
-        console.log("Please enter a valid number!");
-    }
-} while (userGuess !== secretNumber);
-
-console.log("Congratulations! You guessed it right.");
 // in this function we are asigned the secret variable to 7 using the let variable decration metho and we are declarring the guess number name called userGuess 
