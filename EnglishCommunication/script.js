@@ -4,4 +4,5 @@ const answer1 = "let's go ahead"
 const situation2 = "jab bhi dikhe ki ab nahi ho raha communication "
 const answer2 = "start talkin about what you written recently in this code"
 
-const situation3 = ""
+const situation3 = "is tarah kuchh hota"
+const answer3 = "this is a aproach"
