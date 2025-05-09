@@ -29,7 +29,11 @@ const car1 = new Module("Honda", 70000)
 /// mai thing i learned fromm this is not funtionn after using the this getter he becomes the class
 
 class Animal {
+
     constructor(animal) {
+        if (!new.target) {
+            return `new keyword must be use`
+        }
         this.animal = animal
     }
 
@@ -44,3 +48,9 @@ class Animal {
 Animal.prototype.sound = () => {
     return `${this.sound} made the sound`
 } /// concept i learned this is mmost unique way to crreate the another
+
+
+/// how to do errr handling when user called the call without using new keyword
+
+
+
