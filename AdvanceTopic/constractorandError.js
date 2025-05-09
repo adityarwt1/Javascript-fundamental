@@ -27,3 +27,16 @@ class Module {
 const car1 = new Module("Honda", 70000)
 /// Person { name: 'aditya', age: 17 }
 /// mai thing i learned fromm this is not funtionn after using the this getter he becomes the class
+
+class Animal {
+    constructor(animal) {
+        this.animal = animal
+    }
+
+    sound() {
+        this.sound = () => {
+            return "sound of the animal who mmade"
+        }
+    }
+
+}
