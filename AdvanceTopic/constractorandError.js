@@ -40,3 +40,7 @@ class Animal {
     }
 
 }
+
+Animal.prototype.sound = () => {
+    return `${this.sound} made the sound`
+} /// concept i learned this is mmost unique way to crreate the another
