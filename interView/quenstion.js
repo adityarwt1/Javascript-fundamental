@@ -5,3 +5,5 @@ const que3 = 'What happend when you try to access the variable value before inti
 const que4 = "custom layout in the next js"
 const que5 = "how to use loading page into next js"
 const que6 = "library or framework me antar"
+const que7 = "how object work into the javasctipt "
+const que8 = "what is the main porpose to of new keyword in the object orianeted programming language"
