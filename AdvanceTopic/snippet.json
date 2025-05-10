@@ -1,0 +1,32 @@
+{
+    "Print to console": {
+        "scope": "javascript,typescript",
+        "prefix": "log",
+        "body": [
+            "console.log('$1');",
+            "$2"
+        ],
+        "description": "Log output to console"
+    },
+    "route boiler plate": {
+        "scope": "javascript,typescript",
+        "prefix": "route",
+        "body": [
+            "import { NextRequest, NextResponse } from \"next/server\";",
+            "import connectDB from \"@/lib/mongodb\";",
+            "",
+            "export async function POST(req: NextRequest) {",
+            "  try {",
+            "    await connectDB();",
+            "    ",
+            "    // Your logic here",
+            "    return NextResponse.json({ success: true, message: \"Connected Successfully\" }, { status: 200 });",
+            "  } catch (error) {",
+            "    console.log(error);",
+            "    return NextResponse.json({ success: false, message: \"Internal Server Issue\" }, { status: 500 });",
+            "  }",
+            "}"
+        ],
+        "description": "Boilerplate for Next.js API route with MongoDB connection"
+    }
+}
