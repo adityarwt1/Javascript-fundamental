@@ -9,3 +9,6 @@ const person = {
 const boundGreet = person.greeet.bind({ name: "Raj" })
 
 console.log(boundGreet)
+
+///  bind call get output
+
