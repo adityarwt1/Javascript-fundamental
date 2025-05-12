@@ -17,7 +17,7 @@ const file = async (e) => {
     const file = e.target.files?.[0]
 
     if (file) {
-        const base64Format = await fileToBase64(file)
+        const base64Format = await filebase64(file)
 
     }
 }

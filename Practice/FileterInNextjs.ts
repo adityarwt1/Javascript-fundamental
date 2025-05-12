@@ -1,23 +1,23 @@
-export async function POST(req) {
+// export async function POST(req) {
 
-    try {
+//     try {
 
-        await connectDb()
+//         await connectDb()
 
-        const { formData, username, imageUrl } = await req.json()
+//         const { formData, username, imageUrl } = await req.json()
 
-        const searchParams = req.nextUrl.searchParams;
+//         const searchParams = req.nextUrl.searchParams;
 
-        const username = searchParams.get("username");
+//         const username = searchParams.get("username");
 
-        const user = await User.findOne({ username: username })
+//         const user = await User.findOne({ username: username })
 
-        if (!user) {
-            return NextResponse.json({ success: false, message: "User Not Found" }. { statu })
-        }
+//         if (!user) {
+//             return NextResponse.json({ success: false, message: "User Not Found" }. { statu })
+//         }
 
-    }
-    catch (error) {
+//     }
+//     catch (error) {
 
-    }
-}
+//     }
+// }
