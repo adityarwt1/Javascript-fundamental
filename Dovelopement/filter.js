@@ -6,7 +6,7 @@ export async function GET(request) {
         const query = searchParams.get('query') || '';
         const category = searchParams.get('category') || '';
 
-        let filter= {};
+        let filter = {};
 
         if (query) {
             filter.$or = [
