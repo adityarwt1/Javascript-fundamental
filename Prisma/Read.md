@@ -22,4 +22,5 @@ npm install @prisma/client @prisma/extension-accelerate
   6. 
 
   npx prisma studio
-  
+
+  https://www.prisma.io/docs/guides/nextjs
