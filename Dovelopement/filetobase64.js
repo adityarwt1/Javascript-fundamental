@@ -7,7 +7,7 @@ function fileToBase64(file) {
         };
 
         reader.onerror = function (error) {
-            reject(error);
+            reject(error);       
         };
 
         reader.readAsDataURL(file);
