@@ -6,4 +6,5 @@
 // git init // basically this commat initial the git control the local directory
 // git add . /// add all changes into the stanched stages
 // git commit -m "a meesage you added to the commit"
-//
+// git log shows the all information of commit who was commonted and the time 
+// git log --oneline helps to show the what commited
