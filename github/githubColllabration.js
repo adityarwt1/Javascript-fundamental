@@ -10,4 +10,4 @@
 // git log --oneline helps to show the what commited
 // git config --global core.editor "code --wait"
 // .git keep for holding to track the empty folder 
-// .gitignore for ignoring those file who can generate again
+// .gitignore for ignoring those file who can generate again    
