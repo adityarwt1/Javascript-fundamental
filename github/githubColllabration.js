@@ -8,3 +8,6 @@
 // git commit -m "a meesage you added to the commit"
 // git log shows the all information of commit who was commonted and the time 
 // git log --oneline helps to show the what commited
+// git config --global core.editor "code --wait"
+// .git keep for holding to track the empty folder 
+// .gitignore for ignoring those file who can generate again
