@@ -1,0 +1,13 @@
+// create table person
+// CREATE TABLE person (
+// id INT AUTO_INCREMENT ;
+// name VARCHAR(100) NOT NULL;
+// city VARCHAR(100) NOT NULL;
+// ) 
+
+
+
+/// for insert the data 
+
+//  INSERT INTO person(id,name , city )
+//  VALUES (101,'ADITYA RAWAT', 'KUSHMI');
