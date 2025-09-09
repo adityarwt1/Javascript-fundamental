@@ -16,4 +16,4 @@
 
 //DELETE THE DATA
 
-//DELETE
+// DELETE FROM person WHERE name = 'aman';
