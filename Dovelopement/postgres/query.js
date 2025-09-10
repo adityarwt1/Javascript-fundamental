@@ -1,6 +1,6 @@
 // create table person
 // CREATE TABLE person (
-// id INT AUTO_INCREMENT ;
+// id INT SERIAL ;
 // name VARCHAR(100) NOT NULL;
 // city VARCHAR(100) NOT NULL;
 // )
