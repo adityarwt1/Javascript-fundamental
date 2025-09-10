@@ -16,6 +16,7 @@ SELECT * FROM employies;
 // 
 
 UPDATE employies SET dept = 'DEVELOPER' WHERE emp_id = 1;
+UPDATE employies SET dept = 'HR' WHERE dept = 'DEVELOPER';
 
 
 INSERT INTO employies(fname , lname, email, dept, salary) VALUES ('Aditya' , 'Rawat' , 'adityarawat2487@gmail.com' , 'HR' , 60000 );
@@ -31,3 +32,9 @@ INSERT INTO employies(fname , lname , email, dept , salary) VALUES ('Vijay' , 'N
 ALTER TABLE majdoor RENAME TO employies;
 
 DELETE FROM employies;
+
+
+SELECT * FROM employies WHERE emp_id = 1 ;
+SELECT * FROM employies WHERE dept= 'HR' ;
+
+SELECT FROM employies 
