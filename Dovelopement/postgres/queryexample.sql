@@ -236,6 +236,24 @@ SELECT
 FROM employies;
 
 
+/*bonus of the salary*/
+
+SELECT 
+	salary,
+	fname,
+	CASE 
+		WHEN salary  >= 10000 THEN salary / 10 
+	END AS bonus
+FROM employies;
+ 
+/*calulatin the bonus high values */
+SELECT 
+    CASE 
+        WHEN salary >= 40000 THEN 'HIGH'
+        ELSE 'LOW'
+    END AS sal_cat, COUNT(emp_id)
+FROM employies GROUP BY sal_cat;
+
 /**/
 /**/
 /**/
