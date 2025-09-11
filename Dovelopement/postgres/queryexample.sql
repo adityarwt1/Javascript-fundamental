@@ -257,5 +257,249 @@ FROM employies GROUP BY sal_cat;
 /**/
 /**/
 /**/
-/**/
-SELECT * FROM employies;
+SELECT * FROM employies ORDER BY emp_id;
+
+
+/*CREATE THE CUSTOMER TABBLE*/
+
+CREATE TABLE customers(
+cust_id SERIAL PRIMARY KEY,
+cust_name VARCHAR(100) NOT NULL
+);
+/*creating the realtion and the order table*/
+
+CREATE TABLE orders (
+ord_id SERIAL PRIMARY KEY,
+ord_date DATE NOT NULL,
+price NUMERIC	NOT NULL,
+cust_id INTEGER NOT NULL,
+FOREIGN KEY (cust_id) 
+REFERENCES customers(cust_id)
+);
+
+
+INSERT INTO customers(cust_name) VALUES ('Aditya' ),('Aman' ), ('Shivendra'),('Developer');
+
+SELECT * FROM customers;
+
+
+/*inserting the data to the order table */
+
+INSERT INTO orders (ord_date, cust_id, price) VALUES ('2025-09-11',1,250.00),('2025-09-11',2,300), ('2025-09-11',3,400),('2025-09-11',1,300);
+
+
+SELECT * FROM orders;
+
+SELECT column_name, data_type, is_nullable, column_default
+FROM information_schema.columns
+WHERE table_name = 'orders';
+
+
+/*reading with the two table */
+
+SELECT * FROM customers CROSS JOIN orders ;
+
+/*inner join*/
+SELECT * FROM customers c  INNER JOIN orders o ON c.cust_id = o.cust_id;
+
+/*inner joint and the group by name*/
+
+SELECT c.cust_name, SUM(o.price) FROM customers c  
+INNER JOIN orders o 
+ON c.cust_id = o.cust_id 
+GROUP BY cust_name;
+
+/*left join*/
+SELECT * FROM customers c  
+LEFT  JOIN orders o 
+ON c.cust_id = o.cust_id 
+;
+/*right join*/
+SELECT * FROM customers c  
+RIGHT  JOIN orders o 
+ON c.cust_id = o.cust_id 
+;
+
+/*MANY MANY RELATIONSHIP*/
+
+SELECT FROM orders;
+-- Create Students table
+CREATE TABLE students(
+    s_id SERIAL PRIMARY KEY,
+    student_name VARCHAR(100) NOT NULL
+);
+
+-- Create Courses table
+CREATE TABLE courses(
+    c_id SERIAL PRIMARY KEY,
+    course_name VARCHAR(100) NOT NULL,
+    fees NUMERIC NOT NULL
+);
+
+-- Create Enrollment table (junction table)
+CREATE TABLE enrollment (
+    enrollment_id SERIAL PRIMARY KEY,
+    s_id INT NOT NULL,
+    c_id INT NOT NULL,
+    enrollment_date DATE DEFAULT CURRENT_DATE NOT NULL,
+    FOREIGN KEY (s_id) REFERENCES students(s_id),
+    FOREIGN KEY (c_id) REFERENCES courses(c_id)
+);
+
+-- Inserting data into Students
+INSERT INTO students(student_name) 
+VALUES ('RAJU'), ('SHYAM'), ('ALEX');
+
+-- Inserting data into Courses
+INSERT INTO courses (course_name, fees) 
+VALUES ('MATHEMATICS', 500),
+       ('PHYSICS', 600),
+       ('CHEMISTRY', 700);
+
+-- Inserting data into Enrollment
+INSERT INTO enrollment(s_id, c_id) 
+VALUES (1, 1),
+       (1, 2),
+       (2, 1),
+       (2, 3),
+       (3, 3);
+
+-- Drop tables in correct order (first dependent, then parent)
+-- DROP TABLE enrollment;
+-- DROP TABLE courses;
+-- DROP TABLE students;
+
+SELECT * FROM students;
+SELECT * FROM courses;
+SELECT * FROM enrollment;
+
+
+--- Gettin the values matched column
+
+SELECT s.student_name, c.course_name , c.fees , e.enrollment_date FROM enrollment e JOIN students s ON e.s_id = s.s_id JOIN courses c ON c.c_id=e.c_id;
+
+
+
+--- applesoter setup
+
+CREATE TABLE customers (
+    cust_id SERIAL PRIMARY KEY,
+    cust_name VARCHAR(100) NOT NULL
+);
+
+INSERT INTO customers (cust_name)
+VALUES
+    ('Raju'), ('Sham'), ('Paul'), ('Alex');
+
+
+
+CREATE TABLE orders (
+    ord_id SERIAL PRIMARY KEY,
+    ord_date DATE NOT NULL,
+    cust_id INTEGER NOT NULL,
+    FOREIGN KEY (cust_id) REFERENCES customers(cust_id)
+);
+
+INSERT INTO orders (ord_date, cust_id)
+VALUES
+    ('2024-01-01', 1),  -- Raju first order
+    ('2024-02-01', 2),  -- Sham first order
+    ('2024-03-01', 3),  -- Paul first order
+    ('2024-04-04', 2);  -- Sham second order
+
+CREATE TABLE order_items (
+    item_id SERIAL PRIMARY KEY,
+    ord_id INTEGER NOT NULL,
+    p_id INTEGER NOT NULL,
+    quantity INTEGER NOT NULL,
+    FOREIGN KEY (ord_id) REFERENCES orders(ord_id),
+    FOREIGN KEY (p_id) REFERENCES products(p_id)
+);
+
+INSERT INTO order_items (ord_id, p_id, quantity)
+VALUES
+    (1, 1, 1),  -- Raju ordered 1 Laptop
+    (1, 4, 2),  -- Raju ordered 2 Cables
+    (2, 1, 1),  -- Sham ordered 1 Laptop
+    (3, 2, 1),  -- Paul ordered 1 Mouse
+    (3, 4, 5),  -- Paul ordered 5 Cables
+    (4, 3, 1);  -- Sham ordered 1 Keyboard
+
+
+CREATE TABLE products (
+    p_id SERIAL PRIMARY KEY,
+    p_name VARCHAR(100) NOT NULL,
+    price NUMERIC NOT NULL
+);
+
+INSERT INTO products (p_name, price)
+VALUES
+    ('Laptop', 55000.00), 
+    ('Mouse', 500),
+    ('Keyboard', 800.00),
+    ('Cable', 250.00)
+;
+--select the order and the user data
+SELECT 
+	c.cust_name,
+	o.ord_date,
+	p.p_name,
+	p.price,
+	oi.quantity,
+	(oi.quantity*p.price) AS total_price
+FROM order_items oi
+	JOIN
+		products p ON oi.p_id=p.p_id
+	JOIN
+		orders o ON o.ord_id=oi.ord_id
+	JOIN
+		customers c ON o.cust_id=c.cust_id;
+
+
+--views 
+CREATE VIEW billing_info AS
+SELECT 
+	c.cust_name,
+	o.ord_date,
+	p.p_name,
+	p.price,
+	oi.quantity,
+	(oi.quantity*p.price) AS total_price
+FROM order_items oi
+	JOIN
+		products p ON oi.p_id=p.p_id
+	JOIN
+		orders o ON o.ord_id=oi.ord_id
+	JOIN
+		customers c ON o.cust_id=c.cust_id;
+SELECT * FROM billing_info;
+
+
+--having cluse
+
+
+SELECT p_name, SUM(total_price) FROM billing_info GROUP BY p_name HAVING SUM(total_price) >500;
+---ROLLUP
+SELECT p_name, SUM(total_price) FROM billing_info GROUP BY ROLLUP( p_name );
+--- COLLASE using for the tatal remove the null values
+SELECT COALESCE(p_name, 'Total') p_name, SUM(total_price) FROM billing_info GROUP BY ROLLUP( p_name ) ORDER BY SUM(total_price);
+
+---prsedure
+
+CREATE OR REPLACE PROCEDURE update_emp_salary(
+    p_employee_id INT,
+    p_new_salary NUMERIC
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    UPDATE employies
+    SET salary = p_new_salary
+    WHERE emp_id = p_employee_id;
+END;
+$$;
+
+
+--calling the prosedure
+
+CALL update_emp_salary(1,90000);
