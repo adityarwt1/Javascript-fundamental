@@ -499,7 +499,62 @@ BEGIN
 END;
 $$;
 
-
+0
 --calling the prosedure
 
 CALL update_emp_salary(1,90000);
+
+-----subquery
+
+SELECT
+    e.emp_id,
+    e.fname,
+    e.salary
+
+FROM
+    employees e
+WHERE e.dept = 'HR'
+    AND e.salary = (
+    SELECT MAX(emp.salary)
+    FROM employees emp
+    WHERE emp.dept = 'HR'
+);
+---- function in the postgres sql
+
+CREATE OR REPLACE FUNCTION dept_max_sal_emp1(dept_name VARCHAR)
+RETURNS TABLE(emp_id INT, fname VARCHAR, salary NUMERIC)
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        e.emp_id, e.fname, e.salary
+    FROM
+        employies e
+    WHERE
+        e.dept = dept_name
+        AND e.salary = (
+            SELECT MAX(emp.salary)
+            FROM employies emp
+            WHERE emp.dept = dept_name
+        );
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT * FROM dept_max_sal_emp1('HR');
+
+SELECT fname, SUM(salary) OVER() FROM employies;
+
+
+SELECT fname,salary, SUM(salary) OVER(ORDER BY salary) FROM employies;
+--running the average
+SELECT fname,salary, AVG(salary) OVER(PARTITION BY dept) FROM employies ;
+--rank
+SELECT fname, salary, RANK() OVER(ORDER BY salary) FROM employies;
+---desce rank
+SELECT fname, salary, DENSE_RANK() OVER(ORDER BY salary) FROM employies;
+--LAG
+SELECT fname, salary, LAG(salary) OVER() FROM employies;
+--lead 
+SELECT fname, salary, LEAD(salary) OVER() FROM employies;
+SELECT * FROM employies;
+ 

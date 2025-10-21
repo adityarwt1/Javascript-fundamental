@@ -1,0 +1,74 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(100) NOT NULL
+);
+
+INSERT INTO users(username) VALUES ('aditya_rwt1');
+
+SELECT * FROM users;
+
+CREATE TABLE chats(
+chat_id  SERIAL   PRIMARY KEY,
+u_id INT NOT NULL,
+title VARCHAR(100) NOT NULL DEFAULT 'CHAT TITLE',
+FOREIGN KEY (u_id) REFERENCES users(id)
+);
+
+--resonses 
+CREATE TABLE responses (
+    res_id SERIAL PRIMARY KEY,
+    chat_id INT,
+    title VARCHAR(100) NOT NULL,
+    body VARCHAR(1000) NOT NULL,
+    FOREIGN KEY (chat_id) REFERENCES chats(chat_id)
+);
+
+SELECT * FROM chats;
+DROP TABLE chats;
+DROP TABLE RESPONSES;
+
+ALTER TABLE users ADD COLUMN password VARCHAR(100) NOT NULL DEFAULT 'NOT PROVIDED';
+
+ALTER TABLE users ADD CONSTRAINT users_username_unique UNIQUE (username);
+
+
+---deleting the exinsting values
+
+DELETE FROM users;
+
+TRUNCATE TABLE users RESTART IDENTITY;
+
+
+ALTER TABLE chats ADD COLUMN title VARCHAR(100) NOT NULL DEFAULT 'CHAT TITLE';
+SELECT * FROM chats;
+
+
+ALTER TABLE chats ALTER COLUMN body SET DATA TYPE VARCHAR(10000);
+ALTER TABLE responses ALTER COLUMN body SET DATA TYPE VARCHAR(10000);
+
+
+SELECT * FROM CHATS;
+
+SELECT chat_id,title, body FROM CHATS WHERE u_id = 1;
+
+
+DELETE FROM chats WHERE chat_id =1;
+
+TRUNCATE TABLE chats RESTART IDENTITY;
+
+SELECT * FROM CHATS;
+
+SELECT * FROM responses;
+
+SELECT chat_id, title FROM CHATS WHERE u_id = 1;
+
+SELECT chat_id FROM chats WHERE u_id= 1;
+
+SELECT * FROM responses;
+
+DROP TABLE RESPONSES;
+
+ALTER TABLE chats 
+ADD COLUMN shared BOOLEAN DEFAULT FALSE;
+
+SELECT * FROM  chats;
